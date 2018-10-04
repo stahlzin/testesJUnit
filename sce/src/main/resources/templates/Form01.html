@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de Candidatos</h1>
+		</div>
+		<form class="form-inline" method="POST" th:object="${candidato}" th:action="@{/eleicao}" style="margin: 20px 0">
+			<div class="form-group">
+				 
+				<input type="text" class="form-control" placeholder="CPF" th:field="*{cpf}"/> 
+				<input type="text" class="form-control" placeholder="Apto" th:field="*{apto}"/>
+				<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}"/> 
+				<input type="text" class="form-control" placeholder="Plataforma" th:field="*{plataforma}" />
+				<button type="submit" class="btn btn-primary">Adicionar</button>
+
+			</div>
+		</form>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>cpf</th>
+						<th>nome</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="candidato : ${icandidatos}">
+						<td th:text="${candidato.getCpf()}"></td>
+						<td th:text="${candidato.getNome()}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
