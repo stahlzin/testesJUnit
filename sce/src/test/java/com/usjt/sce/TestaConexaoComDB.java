@@ -31,7 +31,7 @@ public class TestaConexaoComDB {
 		String url = "jdbc:mysql://localhost:3306/biblioteca";
 		String driver = "com.mysql.jdbc.Driver";
 		String usuario = "root";
-		String senha = ""; // senha errada
+		String senha = "123"; // senha errada
 		FabricaDeConexoes fabricaDeConexoes = null;
 		ConfiguraDB configuraDB = new ConfiguraDB(url, driver, usuario, senha);
 		fabricaDeConexoes = new FabricaDeConexoes(configuraDB);
@@ -43,7 +43,7 @@ public class TestaConexaoComDB {
 			// verificacao
 			//System.out.println(e.getMessage());
 			assertEquals(e.getMessage(),
-					"java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: NO)");
+					"java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)");
 		}
 	}
 	/**
