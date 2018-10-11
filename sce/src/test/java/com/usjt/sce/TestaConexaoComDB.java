@@ -105,9 +105,9 @@ public class TestaConexaoComDB {
 	@Test
 	public void quandoConectaComURLInvalido_SQLException() {
 		// cenario
-		String url = "jdbc:mysql://localhost:3307/biblioteca";
+		String url = "jdbc:mysql://localhost:37/biblioteca";
 		String driver = "com.mysql.jdbc.Driver";
-		String usuario = "root1"; //usuario invalido
+		String usuario = "root"; //usuario invalido
 		String senha = ""; // senha errada
 		FabricaDeConexoes fabricaDeConexoes = null;
 		ConfiguraDB configuraDB = new ConfiguraDB(url, driver, usuario, senha);

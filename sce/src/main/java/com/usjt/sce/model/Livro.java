@@ -4,6 +4,15 @@ public class Livro {
 	private String isbn;
 	private String titulo;
 	private String autor;
+	
+	public Livro () {
+	}
+	
+	public Livro (String isbn, String titulo, String autor) {
+		this.setIsbn(isbn);
+		this.setAutor(autor);
+		this.setTitulo(titulo);
+	}
 
 	public String getIsbn() {
 		return isbn;
@@ -21,6 +30,9 @@ public class Livro {
 	}
 
 	public void setTitulo(String titulo) {
+		if (titulo == "" | titulo == null) {
+			throw new RuntimeException("Titulo invalido");
+		}
 		this.titulo = titulo;
 	}
 
@@ -29,6 +41,10 @@ public class Livro {
 	}
 
 	public void setAutor(String autor) {
+		this.autor = autor;
+		if (autor == "" | autor == null) {
+			throw new RuntimeException("Autor invalido");
+		}
 		this.autor = autor;
 	}
 }
