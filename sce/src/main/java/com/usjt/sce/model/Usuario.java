@@ -3,7 +3,7 @@ package com.usjt.sce.model;
 public class Usuario {
 	private String ra;
 	private String nome;
-
+	
 	public String getRa() {
 		return ra;
 	}

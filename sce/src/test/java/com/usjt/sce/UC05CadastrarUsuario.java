@@ -15,8 +15,7 @@ public class UC05CadastrarUsuario {
 			// cenario
 			Usuario user = new Usuario();
 			// acao
-			user.setNome("Fernando");
-			user.setRa("333334");
+			user = ObtemUsuario.comDadosValidos();
 		} catch (RuntimeException e) {
 			// verificacao
 			fail("nao deve falhar");
@@ -28,10 +27,9 @@ public class UC05CadastrarUsuario {
 		// cenario
 		Usuario user = new Usuario();
 		// acao
-		user.setNome("Fernando");
 		try {
 			// acao
-			user.setRa("");
+			user = ObtemUsuario.comRAemBranco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -44,10 +42,9 @@ public class UC05CadastrarUsuario {
 		// cenario
 		Usuario user = new Usuario();
 		// acao
-		user.setNome("Fernando");
 		try {
 			// acao
-			user.setRa(null);
+			user = ObtemUsuario.comRANulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -60,10 +57,9 @@ public class UC05CadastrarUsuario {
 		// cenario
 		Usuario user = new Usuario();
 		// acao
-		user.setRa("333334");
 		try {
 			// acao
-			user.setNome("");
+			user = ObtemUsuario.comNomeEmBranco();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -76,10 +72,9 @@ public class UC05CadastrarUsuario {
 		// cenario
 		Usuario user = new Usuario();
 		// acao
-		user.setRa("333334");
 		try {
 			// acao
-			user.setNome(null);
+			user = ObtemUsuario.comNomeNulo();
 			fail("deveria lançar uma exceção");
 		} catch (RuntimeException e) {
 			// verificacao
@@ -88,12 +83,11 @@ public class UC05CadastrarUsuario {
 	}
 	
 	@Test
-	public void CT04getLivro() {
+	public void CT06getLivro() {
 		// cenario
 		Usuario user = new Usuario();
 		// acao
-		user.setNome("Fernando");
-		user.setRa("333334");
+		user = ObtemUsuario.comDadosValidos();
 
 		try {
 			System.out.println(user.getNome() + " -- " + user.getRa());

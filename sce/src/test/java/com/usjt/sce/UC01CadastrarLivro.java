@@ -5,6 +5,9 @@ import org.junit.Test;
 import com.usjt.sce.model.Livro;
 
 public class UC01CadastrarLivro {
+	/**
+	 * Objetivo - verificar o comportamento do sistema no cadastro de Livro com dados
+	 */
 
 	@Test
 	public void CT01CadastrarLivroComDadosValidos() {
@@ -19,6 +22,9 @@ public class UC01CadastrarLivro {
 		}
 	}
 	
+	/**
+	 * Objetivo - verificar o comportamento do sistema no cadastro de Livro com ISBN em branco
+	 */
 	@Test
 	public void CT02cadastrarLivroComISBN_em_branco() {
 		try {
@@ -32,6 +38,10 @@ public class UC01CadastrarLivro {
 			assertEquals("ISBN invalido", e.getMessage());
 		}
 	}
+	
+	/**
+	 * Objetivo - verificar o comportamento do sistema no cadastro de Livro com ISBN nulo
+	 */
 
 	@Test
 	public void CT03cadastrarLivroComISBN_nulo() {
@@ -50,8 +60,9 @@ public class UC01CadastrarLivro {
 	@Test
 	public void CT04getLivro() {
 		// cenario
-		Livro livro = new Livro("123456", "Engenharia de Software", "Pressman");
-
+		Livro livro;
+		//ação
+		livro = ObtemLivro.comDadosValidos();
 		System.out.println(livro.getIsbn() + " -- " + livro.getAutor() + " -- " + livro.getTitulo());
 	}
 	

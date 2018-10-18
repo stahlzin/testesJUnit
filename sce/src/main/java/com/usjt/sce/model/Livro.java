@@ -8,12 +8,6 @@ public class Livro {
 	public Livro () {
 	}
 	
-	public Livro (String isbn, String titulo, String autor) {
-		this.setIsbn(isbn);
-		this.setAutor(autor);
-		this.setTitulo(titulo);
-	}
-
 	public String getIsbn() {
 		return isbn;
 	}
