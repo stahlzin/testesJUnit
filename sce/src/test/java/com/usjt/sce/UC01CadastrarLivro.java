@@ -1,7 +1,10 @@
 package com.usjt.sce;
 
 import static org.junit.Assert.*;
+import com.usjt.sce.model.DAOFactory;
 import org.junit.Test;
+import com.usjt.sce.model.Livro;
+import com.usjt.sce.model.ILivroDAO;
 import com.usjt.sce.model.Livro;
 
 public class UC01CadastrarLivro {
@@ -120,5 +123,48 @@ public class UC01CadastrarLivro {
 			// verificacao
 			assertEquals("Autor invalido", e.getMessage());
 		}
+	}
+	
+	@Test
+	public void CT10CadastrarLivroComDadosValidos() {
+		try {
+			// cenario
+			Livro umLivro = new Livro();
+			// acao
+			umLivro.setIsbn("121212");
+			umLivro.setTitulo("Engenharia de Softwar");
+			umLivro.setAutor("Pressman");
+		} catch (RuntimeException e) {
+			// verificacao
+			fail("nao deve falhar");
+		}
+	}
+
+	@Test
+	public void CT11CadastrarLivroComISBNBranco() {
+		try {
+			// cenario
+			Livro umLivro = new Livro();
+			// acao
+			umLivro.setIsbn("");
+			umLivro.setTitulo("Engenharia de Softwar");
+			umLivro.setAutor("Pressman");
+		} catch (RuntimeException e) {
+			// verificacao
+			assertEquals("ISBN invalido", e.getMessage());
+		}
+	}
+
+	@Test
+	public void CT12CadastrarLivro_com_sucesso() {
+		// cenario
+		Livro umLivro = ObtemLivro.comDadosValidos();
+		DAOFactory mySQLFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
+		ILivroDAO livroDAO = mySQLFactory.getLivroDAO();
+		// acao
+		int codigoRetorno = livroDAO.adiciona(umLivro);
+		// verificacao
+		assertEquals(1, codigoRetorno);
+		livroDAO.exclui(umLivro.getIsbn());
 	}
 }
