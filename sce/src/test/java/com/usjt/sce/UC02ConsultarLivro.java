@@ -21,9 +21,10 @@ public class UC02ConsultarLivro {
 		livroDAO.adiciona(umLivro);
 		resultadoObtido = livroDAO.consulta(umLivro.getIsbn());
 		// verificacao
+		
 		assertTrue(resultadoObtido.equals(umLivro));
+		
 		livroDAO.exclui(umLivro.getIsbn());
-
 	}
 }
 
